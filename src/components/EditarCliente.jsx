@@ -17,7 +17,7 @@ class EditarCliente extends Component {
               if(error) return `Error ${error.message}`
               return (
                 <FormularioEditarCliente
-                  
+                  cliente={data.getCliente}
                 />
               )
             }}

@@ -13,6 +13,14 @@ export const CLIENTE_QUERY = gql `
     getCliente(id: $id){
       nombre
       apellido
+      telefono
+      cedula
+      ciudad
+      direccion
+      tipo
+      emails {
+        email
+      }
     }
   }
 `;
