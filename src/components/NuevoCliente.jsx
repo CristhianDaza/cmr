@@ -14,7 +14,14 @@ class NuevoCliente extends Component {
       tipo: '',
       email: ''
     },
-    error: false
+    error: false,
+    emails: []
+  }
+
+  nuevoCampo = () => {
+    this.setState({
+      emails: this.state.emails.concat([{email: ''}])
+    })
   }
 
   render() {
@@ -170,23 +177,7 @@ class NuevoCliente extends Component {
                   </div>
                 </div>
                 <div className="form-row">
-                  <div className="form-group col-md-6">
-                    <label>Email</label>
-                    <input 
-                      onChange={e => {
-                        this.setState({
-                          cliente: {
-                            ...this.state.cliente,
-                            email: e.target.value
-                          }
-                        })
-                      }} 
-                      type="email" 
-                      className="form-control" 
-                      placeholder="Email" 
-                    />
-                  </div>
-                  <div className="form-group col-md-6">
+                  <div className="form-group col-md-12">
                     <label>Tipo Cliente</label>  
                     <select 
                       className="form-control"
@@ -203,6 +194,21 @@ class NuevoCliente extends Component {
                       <option value="BASICO">BÁSICO</option>
                       <option value="PREMIUM">PREMIUM</option>
                     </select>
+                  </div>
+                  { this.state.emails.map((input, index) => (
+                    <div key={index} className="form-group col-md-12">
+                      <label>Correo {index + 1}</label>
+                      <input type="email" placeholder={`Correo ${index + 1}`} className="form-control"/>
+                    </div>
+                  )) }
+                  <div className="form-group d-flex justify-content-center col-md-12">
+                      <button 
+                        type="button"
+                        className="btn btn-warning"
+                        onClick={this.nuevoCampo}
+                      >
+                        + Agregar Email
+                      </button>
                   </div>
                 </div>
                 <button type="submit" className="btn btn-success float-right">Agregar Cliente</button>
