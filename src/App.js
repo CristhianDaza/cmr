@@ -2,6 +2,9 @@ import React from 'react';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-boost';
 
+// Components
+import Header from './components/Header'
+
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
   onError: ({ networkError, graphQLErros }) => {
@@ -13,7 +16,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <h1>Hola mundo</h1>
+      <Header />
     </ApolloProvider>
   );
 }
