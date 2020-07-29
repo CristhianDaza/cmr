@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { Query } from 'react-apollo';
 import { CLIENTES_QUERY } from '../queries';
 
@@ -10,7 +11,7 @@ const Clientes = () => (
       
       return (
         <>
-          <h2 className="text-center mt-4">Listado Clientes</h2>
+          <h2 className="text-center">Listado Clientes</h2>
           <ul className="list-group mt-4">
             {data.getClientes.map(item => (
               <li key={item.id} className="list-group-item">
@@ -19,9 +20,9 @@ const Clientes = () => (
                     {item.nombre} {item.apellido}
                   </div>
                   <div className="col-md-4 d-flex justify-content-end">
-                    <a className="btn btn-success d-block d-md-inline-block">
+                    <Link className="btn btn-success d-block d-md-inline-block" to={`/cliente/editar/${item.id}`}>
                       Editar Cliente
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </li>
