@@ -32,7 +32,7 @@ class NuevoCliente extends Component {
                   e.preventDefault();
                   const {nombre, apellido, cedula, telefono, ciudad, direccion, tipo, email} = this.state.cliente;
 
-                  if(nombre === '' || apellido === '' || cedula === '' || telefono === '' || ciudad === '' || direccion === '' || tipo === '') {
+                  if(nombre === '' || apellido === '' || telefono === '' || ciudad === '' || direccion === '' || tipo === '') {
                     this.setState({
                       error: true
                     });
