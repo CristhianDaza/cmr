@@ -11,8 +11,7 @@ class NuevoCliente extends Component {
       telefono: '',
       ciudad: '',
       direccion: '',
-      tipo: '',
-      email: ''
+      tipo: ''
     },
     error: false,
     emails: []
@@ -27,6 +26,19 @@ class NuevoCliente extends Component {
   quitarCampo = i => () => {
     this.setState({
       emails: this.state.emails.filter((email, index) => i !== index)
+    })
+  }
+
+  leerCampo = i => e => {
+    const nuevoEmail = this.state.emails.map((email, index) => {
+      if(i !== index) return email
+      return {
+        ...email,
+        email: e.target.value
+      }
+    })
+    this.setState({
+      emails: nuevoEmail
     })
   }
 
@@ -46,7 +58,8 @@ class NuevoCliente extends Component {
               <form className="col-md-8 m-3"
                 onSubmit={e => {
                   e.preventDefault();
-                  const {nombre, apellido, cedula, telefono, ciudad, direccion, tipo, email} = this.state.cliente;
+                  const {nombre, apellido, cedula, telefono, ciudad, direccion, tipo} = this.state.cliente;
+                  const { emails } = this.state
 
                   if(nombre === '' || apellido === '' || telefono === '' || ciudad === '' || direccion === '' || tipo === '') {
                     this.setState({
@@ -72,7 +85,7 @@ class NuevoCliente extends Component {
                     ciudad,
                     direccion,
                     tipo,
-                    email
+                    emails
                   }
 
                   crearCliente({
@@ -205,7 +218,12 @@ class NuevoCliente extends Component {
                     <div key={index} className="form-group col-md-12">
                       <label>Correo {index + 1}</label>
                       <div className="input-group">
-                        <input type="email" placeholder={`Correo ${index + 1}`} className="form-control"/>
+                        <input
+                          type="email"
+                          placeholder={`Correo ${index + 1}`}
+                          className="form-control"
+                          onChange={this.leerCampo(index)}
+                        />
                         <div className="input-group-append">
                           <button type="button" className="btn btn-danger" onClick={this.quitarCampo(index)}>&times; Eliminar</button>
                         </div>
