@@ -9,7 +9,25 @@ const Clientes = () => (
       if(error) return `Error: ${error.message}`
       
       return (
-        <h2 className="text-center">Listado Clientes</h2>
+        <>
+          <h2 className="text-center mt-4">Listado Clientes</h2>
+          <ul className="list-group mt-4">
+            {data.getClientes.map(item => (
+              <li key={item.id} className="list-group-item">
+                <div className="row justify-content-between align-items-center">
+                  <div className="col-md-8 d-flex justify-content-between align-items-center">
+                    {item.nombre} {item.apellido}
+                  </div>
+                  <div className="col-md-4 d-flex justify-content-end">
+                    <a className="btn btn-success d-block d-md-inline-block">
+                      Editar Cliente
+                    </a>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </>
       )
     }}
   </Query>
