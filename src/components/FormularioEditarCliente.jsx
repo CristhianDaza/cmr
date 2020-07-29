@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ACTUALIZAR_CLIENTE } from '../mutations'
 import { Mutation } from 'react-apollo';
 import { withRouter, Link } from 'react-router-dom' 
+import Swal from 'sweetalert2'
 
 class FormularioEditarCliente extends Component {
   state =  {
@@ -55,6 +56,11 @@ class FormularioEditarCliente extends Component {
                 tipo,
                 emails
               }
+              Swal.fire(
+                '¡Editado!',
+                'El cliente ha sido editado.',
+                'success'
+              )
               actualizarCliente({
                 variables: { input }
               })

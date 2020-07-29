@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import { NUEVO_CLIENTE } from '../mutations';
+import Swal from 'sweetalert2'
 
 class NuevoCliente extends Component {
   state = {
@@ -87,6 +88,12 @@ class NuevoCliente extends Component {
                     tipo,
                     emails
                   }
+
+                  Swal.fire(
+                    '¡Creado!',
+                    'El cliente ha sido creado.',
+                    'success'
+                  )
 
                   crearCliente({
                     variables: { input }
