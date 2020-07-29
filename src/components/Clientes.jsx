@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { Query } from 'react-apollo';
 import { CLIENTES_QUERY } from '../queries';
+import { ELIMINAR_CLIENTE } from '../mutations';
 
 const Clientes = () => (
   <Query query={CLIENTES_QUERY} pollInterval={1000}>
@@ -20,6 +21,15 @@ const Clientes = () => (
                     {item.nombre} {item.apellido}
                   </div>
                   <div className="col-md-4 d-flex justify-content-end">
+                    <button 
+                      type="button"
+                      className="btn btn-danger db-block d-md-inline-block mr-2"
+                      onClick={() => {
+                        console.log(item.id)
+                      }}
+                    >
+                      &times; Eliminar
+                    </button>
                     <Link className="btn btn-success d-block d-md-inline-block" to={`/cliente/editar/${item.id}`}>
                       Editar Cliente
                     </Link>
