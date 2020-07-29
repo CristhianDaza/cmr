@@ -1,6 +1,7 @@
 import React from 'react';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-boost';
+import Clientes from './components/Clientes'
 
 // Components
 import Header from './components/Header'
@@ -17,6 +18,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Header />
+      <Clientes />
     </ApolloProvider>
   );
 }
