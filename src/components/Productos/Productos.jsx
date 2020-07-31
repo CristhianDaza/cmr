@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Query } from 'react-apollo';
+import { Query, Mutation } from 'react-apollo';
 import { OBTENER_PRODUCTOS } from '../../queries';
 import { Link } from 'react-router-dom';
+import { ELIMINAR_PRODUCTO } from '../../mutations';
+import Swal from 'sweetalert2';
 
 class Productos extends Component {
   render() {
@@ -35,7 +37,39 @@ class Productos extends Component {
                         <td>{item.precio}</td>
                         <td>{item.stock}</td>
                         <td>
-                          <button type="button" className="btn btn-danger mr-2">&times; Eliminar</button>
+                          <Mutation mutation={ELIMINAR_PRODUCTO}>
+                            {eliminarProducto => (
+                              <button 
+                                type="button" 
+                                className="btn btn-danger mr-2"
+                                onClick={() => {
+                                  Swal.fire({
+                                    title: '¿Estas seguro?',
+                                    text: "¡No podrás revertir esto!",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    cancelButtonText: 'Cancelar',
+                                    confirmButtonText: '¡Si, eliminar!'
+                                  }).then((result) => {
+                                    if (result.value) {
+                                      eliminarProducto({
+                                        variables: { id }
+                                      })
+                                      Swal.fire(
+                                        '¡Eliminado!',
+                                        'El producto ha sido eliminado.',
+                                        'success'
+                                      )
+                                    }
+                                  })
+                                }}
+                              >
+                                &times; Eliminar
+                              </button>
+                            )}
+                          </Mutation>
                           <Link to={`/productos/editar/${id}`}><button type="button" className="btn btn-success">Editar</button></Link>
                         </td>
                       </tr>
