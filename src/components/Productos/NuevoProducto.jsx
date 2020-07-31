@@ -16,6 +16,13 @@ class NuevoProducto extends Component {
     })
   }
 
+  validarForm = () => {
+    const { referencia, descripcion, precio, stock } = this.state;
+    const noValido = !referencia || !descripcion || !precio || !stock;
+
+    return noValido;
+  }
+
   render() {
     return (
       <>
@@ -70,6 +77,7 @@ class NuevoProducto extends Component {
                 />
               </div>
               <button 
+                disabled={this.validarForm()}
                 type="submit" 
                 className="btn btn-success float-right">
                   Crear Producto
