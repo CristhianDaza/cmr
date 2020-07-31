@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import Paginador from '../Paginador'
 
 class Productos extends Component {
-  limite = 2
+  limite = 10
   state = {
     paginador: {
       offset: 0,
