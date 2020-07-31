@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { Query, Mutation } from 'react-apollo';
-import { CLIENTES_QUERY } from '../queries';
-import { ELIMINAR_CLIENTE } from '../mutations';
-import Paginador from './Paginador'
+import { CLIENTES_QUERY } from '../../queries';
+import { ELIMINAR_CLIENTE } from '../../mutations';
+import Paginador from '../Paginador'
 import Swal from 'sweetalert2'
 
 class Clientes extends Component {

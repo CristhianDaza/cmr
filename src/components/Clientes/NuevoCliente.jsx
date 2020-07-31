@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
-import { NUEVO_CLIENTE } from '../mutations';
+import { NUEVO_CLIENTE } from '../../mutations';
 import Swal from 'sweetalert2'
 
 class NuevoCliente extends Component {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ACTUALIZAR_CLIENTE } from '../mutations'
+import { ACTUALIZAR_CLIENTE } from '../../mutations'
 import { Mutation } from 'react-apollo';
 import { withRouter, Link } from 'react-router-dom' 
 import Swal from 'sweetalert2'
