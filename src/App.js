@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Clientes from './components/Clientes/Clientes'
 import EditarCliente from './components/Clientes/EditarCliente'
 import NuevoCliente from './components/Clientes/NuevoCliente'
+import nuevoProducto from './components/Productos/NuevoProducto'
 
 // Components
 import Header from './components/Layout/Header'
@@ -31,6 +32,7 @@ function App() {
               <Route exact path="/" component={Clientes} />
               <Route exact path="/cliente/editar/:id" component={EditarCliente} />
               <Route exact path="/cliente/nuevo" component={NuevoCliente} />
+              <Route exact path="/producto/nuevo" component={nuevoProducto} />
             </Switch>
           </div>
         </>
