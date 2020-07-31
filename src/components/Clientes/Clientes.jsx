@@ -85,7 +85,7 @@ class Clientes extends Component {
                             </button>
                           )}
                         </Mutation>
-                        <Link className="btn btn-success d-block d-md-inline-block" to={`/cliente/editar/${item.id}`}>
+                        <Link className="btn btn-success d-block d-md-inline-block" to={`/clientes/editar/${item.id}`}>
                           Editar Cliente
                         </Link>
                       </div>

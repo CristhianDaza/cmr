@@ -36,7 +36,7 @@ class FormularioEditarCliente extends Component {
     return (
       <Mutation
         mutation={ACTUALIZAR_CLIENTE}
-        onCompleted={() => this.props.refetch().then(() => this.props.history.push('/'))}
+        onCompleted={() => this.props.refetch().then(() => this.props.history.push('/clientes'))}
       >
         {actualizarCliente => (
           <form 
@@ -232,7 +232,7 @@ class FormularioEditarCliente extends Component {
               </div>
             </div>
             <button type="submit" className="btn btn-success float-right">Guardar Cambios</button>
-            <Link to="/">
+            <Link to="/clientes">
               <button type="button" className="btn btn-danger float-right mr-2">
                   Cancelar
               </button>
