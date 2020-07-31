@@ -11,7 +11,7 @@ class EditarProducto extends Component {
         <h1 className="text-center">Editar Producto</h1>
         <div className="row justify-content-center">
           <Query query={OBTENER_PRODUCTO} variables={{ id }}>
-            {({ loading, error, data, refetch}) => {
+            {({ loading, error, data}) => {
               if(loading) return 'Cargando...'
               if(error) return `Error ${error.message}`
 
@@ -19,7 +19,6 @@ class EditarProducto extends Component {
                 <FormularioEditarProducto
                   producto={data}
                   id={id}
-                  refetch={refetch}
                 />
               )
             }}

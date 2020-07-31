@@ -42,3 +42,14 @@ export const ELIMINAR_PRODUCTO = gql `
   mutation eliminarProducto($id: ID!) {
     eliminarProducto(id: $id)
   }`;
+
+export const ACTUALIZAR_PRODUCTO = gql `
+  mutation actualizarcliente($input: ProductoInput) {
+    actualizarProducto(input: $input) {
+      referencia
+      descripcion
+      stock
+      precio
+    }
+  }
+`
