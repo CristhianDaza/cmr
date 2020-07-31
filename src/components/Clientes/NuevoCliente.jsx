@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import { NUEVO_CLIENTE } from '../../mutations';
+import { Link } from 'react-router-dom' 
 import Swal from 'sweetalert2'
 
 class NuevoCliente extends Component {
@@ -238,16 +239,21 @@ class NuevoCliente extends Component {
                     </div>
                   )) }
                   <div className="form-group d-flex justify-content-center col-md-12">
-                      <button 
-                        type="button"
-                        className="btn btn-warning"
-                        onClick={this.nuevoCampo}
-                      >
-                        + Agregar Email
-                      </button>
+                    <button 
+                      type="button"
+                      className="btn btn-warning"
+                      onClick={this.nuevoCampo}
+                    >
+                      + Agregar Email
+                    </button>
                   </div>
                 </div>
                 <button type="submit" className="btn btn-success float-right">Agregar Cliente</button>
+                <Link to="/">
+                  <button type="button" className="btn btn-danger float-right mr-2">
+                    Cancelar
+                  </button>
+                </Link>
               </form>
             )}
           </Mutation>
