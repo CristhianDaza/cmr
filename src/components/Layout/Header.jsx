@@ -13,7 +13,7 @@ const Header = () => (
         <ul className="navbar-nav ml-auto text-right">
           <li className="nav-item active">
             <Link className="btn btn-success mr-2" to="/cliente/nuevo">Nuevo Cliente</Link>
-            <Link className="btn btn-success" to="/producto/nuevo">Nuevo Producto</Link>
+            <Link className="btn btn-success" to="/productos/nuevo">Nuevo Producto</Link>
           </li>
         </ul>
       </div>
