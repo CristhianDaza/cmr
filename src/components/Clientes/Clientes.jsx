@@ -48,10 +48,15 @@ class Clientes extends Component {
                 return (
                   <li key={item.id} className="list-group-item">
                     <div className="row justify-content-between align-items-center">
-                      <div className="col-md-8 d-flex justify-content-between align-items-center">
+                      <div className="col-md-7 d-flex justify-content-between align-items-center">
                         {item.nombre} {item.apellido}
                       </div>
-                      <div className="col-md-4 d-flex justify-content-end">
+                      <div className="col-md-5 d-flex justify-content-end">
+                        <Link 
+                          to={`/pedidos/nuevo/${id}`}
+                          type="button"
+                          className="btn btn-warning d-block d-md-inline-clock mr-2"
+                          >&#43; Nuevo pedido</Link>
                         <Mutation mutation={ELIMINAR_CLIENTE}>
                           {eliminarCliente => (
                             <button 

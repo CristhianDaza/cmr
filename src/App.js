@@ -8,6 +8,7 @@ import NuevoCliente from './components/Clientes/NuevoCliente'
 import NuevoProducto from './components/Productos/NuevoProducto'
 import Productos from './components/Productos/Productos'
 import EditarProducto from './components/Productos/EditarProducto'
+import NuevoPedido from './components/Pedidos/NuevoPedido'
 
 // Components
 import Header from './components/Layout/Header'
@@ -37,6 +38,7 @@ function App() {
               <Route exact path="/productos/nuevo" component={NuevoProducto} />
               <Route exact path="/productos" component={Productos} />
               <Route exact path="/productos/editar/:id" component={EditarProducto} />
+              <Route exact path="/pedidos/nuevo/:id" component={NuevoPedido} />
             </Switch>
           </div>
         </>
