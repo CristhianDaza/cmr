@@ -5,6 +5,19 @@ import Resumen from './Resumen';
 import GenerarPedido from './GenerarPedido';
 import Swal from 'sweetalert2';
 
+function addCommas(nStr) {
+  // eslint-disable-next-line no-param-reassign
+  nStr += '';
+  const x = nStr.split('.');
+  let x1 = x[0];
+  const x2 = x.length > 1 ? `.${x[1]}` : '';
+  const rgx = /(\d+)(\d{3})/;
+  while (rgx.test(x1)) {
+    x1 = x1.replace(rgx, '$1.$2');
+  }
+  return x1 + x2;
+}
+
 const colourStyles = {
   control: styles => ({ ...styles, backgroundColor: 'white' }),
   option: (styles, { isDisabled, isFocused, isSelected }) => {
@@ -145,7 +158,7 @@ class ContenidoPedido extends Component {
           eliminarProducto={this.eliminarProducto}
         />
         <p className="font-weight-bold float-right mt-4">
-          Total: <span className="font-weight-normal">${this.state.total}</span>
+          Total: <span className="font-weight-normal">${addCommas(this.state.total)}</span>
         </p>
         <GenerarPedido
           productos={this.state.productos}
