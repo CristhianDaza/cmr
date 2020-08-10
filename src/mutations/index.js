@@ -53,3 +53,10 @@ export const ACTUALIZAR_PRODUCTO = gql `
     }
   }
 `
+
+export const NUEVO_PEDIDO = gql `
+mutation nuevoPedido($input: PedidoInput) {
+  nuevoPedido(input: $input) {
+    id
+  }
+}`;
