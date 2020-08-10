@@ -60,3 +60,9 @@ mutation nuevoPedido($input: PedidoInput) {
     id
   }
 }`;
+
+export const ACTUALIZAR_ESTADO = gql `
+  mutation actualizarEstado($input: PedidoInput) {
+    actualizarEstado(input: $input)
+  }
+`

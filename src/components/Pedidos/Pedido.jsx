@@ -1,11 +1,14 @@
 import React from 'react';
-import { Query } from 'react-apollo';
+import { Query, Mutation } from 'react-apollo';
 import { OBTENER_PRODUCTO } from '../../queries';
 import ResumenProducto from './ResumenProducto';
+import { ACTUALIZAR_ESTADO } from '../../mutations';
 
 const Pedido = (props) => {
   const { pedido } = props
+  const { id } = props.pedido;
   const fecha = new Date(Number(pedido.fecha))
+
   function addCommas(nStr) {
     nStr += '';
     const x = nStr.split('.');
@@ -17,19 +20,47 @@ const Pedido = (props) => {
     }
     return x1 + x2;
   }
+
+  const { estado } = pedido;
+  let clase;
+  if(estado === 'PENDIENTE') {
+    clase = 'border-light'
+  } else if (estado === 'CANCELADO') {
+    clase = 'border-danger'
+  } else {
+    clase = 'border-success'
+  }
+
   return (
     <div className="col-md-4">
-      <div className={`card mb-3`} >
+      <div className={`card mb-3 ${clase}`} >
         <div className="card-body">
           <p className="card-text font-weight-bold ">Estado:
-            <select
-              value={pedido.estado}
-              className="form-control my-3"
-            >
-              <option value="PENDIENTE">PENDIENTE</option>
-              <option value="COMPLETADO">COMPLETADO</option>
-              <option value="CANCELADO">CANCELADO</option>
-            </select>
+            <Mutation mutation={ACTUALIZAR_ESTADO}>
+              {actualizarEstado => (
+              <select
+                  value={pedido.estado}
+                  onChange={e => {
+                    const input = {
+                      id,
+                      pedido: pedido.pedido,
+                      fecha: pedido.fecha,
+                      total: pedido.total,
+                      cliente: props.cliente,
+                      estado: e.target.value
+                    }
+                    actualizarEstado({
+                      variables: {input}
+                    })
+                  }}
+                  className="form-control my-3"
+                >
+                  <option value="PENDIENTE">PENDIENTE</option>
+                  <option value="COMPLETADO">COMPLETADO</option>
+                  <option value="CANCELADO">CANCELADO</option>
+                </select>
+              )}
+            </Mutation>
           </p> 
           <p className="card-text font-weight-bold">Pedido ID:
             <span className="font-weight-normal"> {pedido.id}</span>
