@@ -16,6 +16,7 @@ const Resumen = (props) => {
             <th>REFERENCIA</th>
             <th>DESCRIPCIÓN</th>
             <th>PRECIO</th>
+            <th>INVENTARIO</th>
             <th>CANTIDAD</th>
             <th>ELIMNAR</th>
           </tr>

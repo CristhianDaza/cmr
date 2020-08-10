@@ -3,6 +3,7 @@ import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import Resumen from './Resumen';
 import GenerarPedido from './GenerarPedido';
+import Swal from 'sweetalert2';
 
 const colourStyles = {
   control: styles => ({ ...styles, backgroundColor: 'white' }),
@@ -116,6 +117,13 @@ class ContenidoPedido extends Component {
   }
 
   render() {
+    const emnsaje = (this.state.total < 0)
+                    ? Swal.fire(
+                      '¡Error!',
+                      'Las cantidades no pueden ser negativas.',
+                      'error'
+                      )
+                    : ''
     return (
       <>
         <h2 className="text-center mb-5">Seleccionar Productos</h2>
