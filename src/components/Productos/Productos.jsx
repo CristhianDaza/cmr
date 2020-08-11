@@ -6,6 +6,18 @@ import { ELIMINAR_PRODUCTO } from '../../mutations';
 import Swal from 'sweetalert2';
 import Paginador from '../Paginador'
 
+function addCommas(nStr) {
+  nStr += '';
+  const x = nStr.split('.');
+  let x1 = x[0];
+  const x2 = x.length > 1 ? `.${x[1]}` : '';
+  const rgx = /(\d+)(\d{3})/;
+  while (rgx.test(x1)) {
+    x1 = x1.replace(rgx, '$1.$2');
+  }
+  return x1 + x2;
+}
+
 class Productos extends Component {
   limite = 10
   state = {
@@ -61,7 +73,7 @@ class Productos extends Component {
                         <tr key={id}>
                           <td>{item.referencia}</td>
                           <td>{item.descripcion}</td>
-                          <td>{item.precio}</td>
+                          <td>$ {addCommas(item.precio)}</td>
                           <td>{item.stock}</td>
                           <td>
                             <Mutation mutation={ELIMINAR_PRODUCTO}>
