@@ -16,20 +16,11 @@ const ResumenProducto = ({cantidad, producto}) => {
 
   return (
     <>
-      <div className="border mb-4 p-4">
-        <p className="card-text font-weight-bold">
-          Nombre:
-          <span className="font-weight-normal"> {producto.descripcion}</span>
-        </p>
-        <p className="card-text font-weight-bold">
-          Cantidad:
-          <span className="font-weight-normal"> {cantidad}</span>
-        </p>
-        <p className="card-text font-weight-bold">
-          Precio:
-          <span className="font-weight-normal"> ${addCommas(producto.precio)}</span>
-        </p>
-      </div>
+      <tr>
+            <td>{producto.descripcion}</td>
+            <td>{cantidad}</td>
+            <td>${addCommas(producto.precio)}</td>
+            </tr>
     </>
   );
 }

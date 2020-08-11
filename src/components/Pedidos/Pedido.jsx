@@ -72,24 +72,35 @@ const Pedido = (props) => {
             <span className="font-weight-normal"> ${addCommas(pedido.total)}</span>
           </p>
           <h3 className="card-text text-center mb-3">Artículos del pedido</h3>
-          { pedido.pedido.map((producto, index) => {
-            const { id } = producto
-            return (
-              <Query key={index+id} query={OBTENER_PRODUCTO} variables={{id}}>
-                {({loading, error, data}) => {
-                  if(loading) return 'Cargando...'
-                  if(error) return `Error ${error.message}`
-                  return (
-                    <ResumenProducto
-                      producto={data.obtenerProducto}
-                      cantidad={producto.cantidad}
-                      key={producto.id}
-                    />
-                  )
-                }}
-              </Query>
-            )
-          }) }
+          <table className="table table-hover">
+          <thead>
+            <tr className="table-primary">
+              <th scope="col">Nombre</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Precio</th>
+            </tr>
+          </thead>
+            <tbody>
+              { pedido.pedido.map((producto, index) => {
+                const { id } = producto
+                return (
+                  <Query key={index+id} query={OBTENER_PRODUCTO} variables={{id}}>
+                    {({loading, error, data}) => {
+                      if(loading) return 'Cargando...'
+                      if(error) return `Error ${error.message}`
+                      return (
+                        <ResumenProducto
+                          producto={data.obtenerProducto}
+                          cantidad={producto.cantidad}
+                          key={producto.id}
+                        />
+                      )
+                    }}
+                  </Query>
+                )
+                }) }
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
