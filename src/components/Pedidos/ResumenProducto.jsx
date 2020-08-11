@@ -15,13 +15,11 @@ const ResumenProducto = ({cantidad, producto}) => {
   }
 
   return (
-    <>
-      <tr>
-            <td>{producto.descripcion}</td>
-            <td>{cantidad}</td>
-            <td>${addCommas(producto.precio)}</td>
-            </tr>
-    </>
+    <tr>
+      <td>{producto.descripcion}</td>
+      <td>{cantidad}</td>
+      <td>${addCommas(producto.precio)}</td>
+    </tr>
   );
 }
 

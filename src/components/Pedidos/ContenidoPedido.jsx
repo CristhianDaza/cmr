@@ -4,6 +4,7 @@ import makeAnimated from 'react-select/animated';
 import Resumen from './Resumen';
 import GenerarPedido from './GenerarPedido';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 function addCommas(nStr) {
   // eslint-disable-next-line no-param-reassign
@@ -165,6 +166,11 @@ class ContenidoPedido extends Component {
           total={this.state.total}
           idCliente={this.props.id}
         />
+        <Link to="/clientes">
+          <button type="button" className="btn btn-danger mt-4 ml-2">
+            Cancelar
+          </button>
+        </Link>
       </>
     );
   }

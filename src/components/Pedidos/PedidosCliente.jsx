@@ -3,6 +3,7 @@ import{ Query } from 'react-apollo';
 import { OBTENER_PEDIDOS } from '../../queries';
 import '../../Spinner.css'
 import Pedido from './Pedido';
+import { Link } from 'react-router-dom';
 
 export default function PedidosCliente(props) {
   const cliente = props.match.params.id
@@ -10,6 +11,11 @@ export default function PedidosCliente(props) {
   return (
     <>
       <h1 className="text-center mb-5">Pedidos del Cliente</h1>
+      <Link to="/clientes">
+        <button type="button" className="btn btn-danger mb-3">
+          Cancelar
+        </button>
+      </Link>
       <div className="row">
         <Query query={OBTENER_PEDIDOS} variables={{cliente}} pollInterval={500}>
           {({loading, error, data, startPolling, stopPolling}) => {

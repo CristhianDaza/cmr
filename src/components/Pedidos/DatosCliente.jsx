@@ -1,7 +1,6 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import { CLIENTE_QUERY } from '../../queries';
-import { Link } from 'react-router-dom';
 
 const DatosCliente = ({ id }) => {
   return (
@@ -27,11 +26,6 @@ const DatosCliente = ({ id }) => {
           )
         }}
       </Query>
-      <Link to="/clientes">
-        <button type="button" className="btn btn-danger float-right mt-4">
-          Cancelar
-        </button>
-      </Link>
     </>
   );
 }
