@@ -28,6 +28,9 @@ class Login extends Component {
     usuarioAutenticar()
       .then(async ({data}) => {
         localStorage.setItem('token', data.autenticarUsuario.token)
+
+        await this.props.refetch()
+
         this.limpiarState()
 
         const Toast = Swal.mixin({
@@ -46,6 +49,10 @@ class Login extends Component {
           icon: 'success',
           title: 'Inicio de sesión exitosamente.'
         })
+
+        setTimeout(() => {
+          this.props.history.push('/panel')
+        }, 1000)
       })
   }
   validarForm = () => {

@@ -1,6 +1,4 @@
 import React from 'react';
-import { ApolloProvider } from 'react-apollo';
-import ApolloClient, { InMemoryCache } from 'apollo-boost';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Clientes from './components/Clientes/Clientes'
 import EditarCliente from './components/Clientes/EditarCliente'
@@ -16,55 +14,34 @@ import Panel from './components/Panel/Panel';
 import Header from './components/Layout/Header'
 import Registro from './components/Auth/Registro';
 import Login from './components/Auth/Login';
+import Session from './components/Session';
 
-const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
-  // enviar token al servidor
-  fetchOptions: {
-    credentials: 'include'
-  },
-  request: operation => {
-    const token = localStorage.getItem('token')
-    operation.setContext({
-      headers: {
-        authorization: token
-      }
-    })
-  },
-  cache: new InMemoryCache({
-    addTypename: false
-  }),
-  onError: ({ networkError, graphQLErros }) => {
-    console.log('graphQLErros', graphQLErros)
-    console.log('networkError', networkError)
-  }
-});
-
-function App() {
+const App = ({refetch, session}) => {
+  console.log(session)
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <>
-          <Header />
-          <div className="container">
-            <Switch>
-              <Route exact path="/clientes" component={Clientes} />
-              <Route exact path="/clientes/editar/:id" component={EditarCliente} />
-              <Route exact path="/clientes/nuevo" component={NuevoCliente} />
-              <Route exact path="/productos/nuevo" component={NuevoProducto} />
-              <Route exact path="/productos" component={Productos} />
-              <Route exact path="/productos/editar/:id" component={EditarProducto} />
-              <Route exact path="/pedidos/:id" component={PedidosCliente} />
-              <Route exact path="/pedidos/nuevo/:id" component={NuevoPedido} />
-              <Route exact path="/panel" component={Panel} />
-              <Route exact path="/registro" component={Registro} />
-              <Route exact path="/login" component={Login} />
-            </Switch>
-          </div>
-        </>
-      </Router>
-    </ApolloProvider>
+    <Router>
+      <>
+        <Header />
+        <div className="container">
+          <Switch>
+            <Route exact path="/clientes" component={Clientes} />
+            <Route exact path="/clientes/editar/:id" component={EditarCliente} />
+            <Route exact path="/clientes/nuevo" component={NuevoCliente} />
+            <Route exact path="/productos/nuevo" component={NuevoProducto} />
+            <Route exact path="/productos" component={Productos} />
+            <Route exact path="/productos/editar/:id" component={EditarProducto} />
+            <Route exact path="/pedidos/:id" component={PedidosCliente} />
+            <Route exact path="/pedidos/nuevo/:id" component={NuevoPedido} />
+            <Route exact path="/panel" component={Panel} />
+            <Route exact path="/registro" component={Registro} />
+            <Route exact path="/login"render={() => <Login refetch={refetch} />} />
+          </Switch>
+        </div>
+      </>
+    </Router>
   );
 }
 
-export default App;
+const RootSession = Session(App);
+
+export { RootSession }
