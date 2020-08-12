@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import Clientes from './components/Clientes/Clientes'
 import EditarCliente from './components/Clientes/EditarCliente'
 import NuevoCliente from './components/Clientes/NuevoCliente'
@@ -17,12 +17,14 @@ import Login from './components/Auth/Login';
 import Session from './components/Session';
 
 const App = ({refetch, session}) => {
-  console.log(session)
+  const { obtenerUsuario } = session;
+  const mensaje = (obtenerUsuario) ? `Bienvenid@: ${obtenerUsuario.usuario}` : <Redirect to="/login" />
   return (
     <Router>
       <>
-        <Header />
+        <Header session={session} />
         <div className="container">
+          <p className="text-right">{ mensaje }</p>
           <Switch>
             <Route exact path="/clientes" component={Clientes} />
             <Route exact path="/clientes/editar/:id" component={EditarCliente} />
