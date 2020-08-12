@@ -14,11 +14,14 @@ const ResumenProducto = ({cantidad, producto}) => {
     return x1 + x2;
   }
 
+  const valorTotal = Number(producto.precio) * Number(cantidad)
+
   return (
     <tr>
       <td>{producto.descripcion}</td>
       <td>{cantidad}</td>
       <td>${addCommas(producto.precio)}</td>
+      <td>${addCommas(valorTotal)}</td>
     </tr>
   );
 }

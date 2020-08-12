@@ -83,12 +83,12 @@ class NuevoProducto extends Component {
                     />
                   </div>
                   <div className="form-group">
-                    <label>Descripción:</label>
+                    <label>Nombre:</label>
                     <input 
                       type="text"
                       name="descripcion" 
                       className="form-control" 
-                      placeholder="Descripción del Producto"
+                      placeholder="Nombre del Producto"
                       onChange={this.actualizarState}
                     />
                   </div>
@@ -123,7 +123,7 @@ class NuevoProducto extends Component {
                       className="btn btn-success float-right">
                         Crear Producto
                     </button>
-                    <Link to="/">
+                    <Link to="/productos">
                       <button type="button" className="btn btn-danger float-right mr-2">
                         Cancelar
                       </button>

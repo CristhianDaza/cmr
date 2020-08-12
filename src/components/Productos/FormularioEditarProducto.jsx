@@ -85,13 +85,13 @@ class FormularioEditarProducto extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label>Descripción:</label>
+                  <label>Nombre:</label>
                   <input 
                     onChange={this.actualizarState}
                     type="text"
                     name="descripción" 
                     className="form-control" 
-                    placeholder="Descripción del Producto"
+                    placeholder="Nombre del Producto"
                     value={descripcion}
                   />
                 </div>

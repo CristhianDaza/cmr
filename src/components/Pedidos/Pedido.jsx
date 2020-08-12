@@ -3,6 +3,7 @@ import { Query, Mutation } from 'react-apollo';
 import { OBTENER_PRODUCTO } from '../../queries';
 import ResumenProducto from './ResumenProducto';
 import { ACTUALIZAR_ESTADO } from '../../mutations';
+import ReactHTML from 'react-html-table-to-excel';
 import '../../pedidos.css'
 
 const Pedido = (props) => {
@@ -33,7 +34,7 @@ const Pedido = (props) => {
   }
 
   return (
-    <div className="col-md-4">
+    <div className="col-md-6">
       <div className={`card mb-3 ${clase}`} >
         <div className="card-body">
           <p className="card-text font-weight-bold ">Estado:
@@ -66,14 +67,15 @@ const Pedido = (props) => {
           <p className="card-text font-weight-bold">Fecha Pedido:
             <span className="font-weight-normal"> {fecha.toLocaleString('es-CO')}</span>
           </p>
-          <table className="table table-hover">
-          <thead>
-            <tr className="table-primary">
-              <th scope="col">Nombre</th>
-              <th scope="col">Cantidad</th>
-              <th scope="col">Precio</th>
-            </tr>
-          </thead>
+          <table className="table table-hover" id={id}>
+            <thead>
+              <tr className="table-primary">
+                <th scope="col">Nombre</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
             <tbody>
               { pedido.pedido.map((producto, index) => {
                 const { id } = producto
@@ -99,7 +101,14 @@ const Pedido = (props) => {
             <p className="card-text resaltar-texto bg-info">Total: </p>
             <p className="font-weight-normal ml-1 inc-texto">$ {addCommas(pedido.total)}</p>
           </div>
-          <button className="btn btn-success btn-block">Exportar Excel</button>
+          <ReactHTML
+            className="btn btn-success btn-block"
+            id={id+1}
+            table={id}
+            filename="Pedido"
+            sheet="Hoja 1"
+            buttonText="Exportar Excel"
+          />
         </div>
       </div>
     </div>

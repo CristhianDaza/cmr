@@ -59,7 +59,7 @@ class Productos extends Component {
                   <thead>
                     <tr className="table-primary">
                       <th scope="col">REFERENCIA</th>
-                      <th scope="col">DESCRIPCIÓN</th>
+                      <th scope="col">NOMBRE</th>
                       <th scope="col">PRECIO</th>
                       <th scope="col">EXISTENCIAS</th>
                       <th scope="col">ACCIONES</th>
