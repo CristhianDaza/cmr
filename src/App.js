@@ -14,6 +14,8 @@ import Panel from './components/Panel/Panel';
 
 // Components
 import Header from './components/Layout/Header'
+import Registro from './components/Auth/Registro';
+import Login from './components/Auth/Login';
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
@@ -43,6 +45,8 @@ function App() {
               <Route exact path="/pedidos/:id" component={PedidosCliente} />
               <Route exact path="/pedidos/nuevo/:id" component={NuevoPedido} />
               <Route exact path="/panel" component={Panel} />
+              <Route exact path="/registro" component={Registro} />
+              <Route exact path="/login" component={Login} />
             </Switch>
           </div>
         </>
