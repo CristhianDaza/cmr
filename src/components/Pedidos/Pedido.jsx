@@ -99,6 +99,7 @@ const Pedido = (props) => {
             <p className="card-text resaltar-texto bg-info">Total: </p>
             <p className="font-weight-normal ml-1 inc-texto">$ {addCommas(pedido.total)}</p>
           </div>
+          <button className="btn btn-success btn-block">Exportar Excel</button>
         </div>
       </div>
     </div>
