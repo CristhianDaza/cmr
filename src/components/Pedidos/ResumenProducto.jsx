@@ -18,6 +18,7 @@ const ResumenProducto = ({cantidad, producto}) => {
 
   return (
     <tr>
+      <td>{producto.referencia}</td>
       <td>{producto.descripcion}</td>
       <td>{cantidad}</td>
       <td>${addCommas(producto.precio)}</td>

@@ -95,7 +95,7 @@ class ContenidoPedido extends Component {
           placeholder={'Seleccionar Productos'}
           noOptionsMessage={e=>{return 'No hay más productos'}}
           getOptionValue={(options) => options.id}
-          getOptionLabel={(options) => options.descripcion}
+          getOptionLabel={(options) => options.referencia}
           onChange={this.seleccionarProducto}
           value={this.state.productos}
         />

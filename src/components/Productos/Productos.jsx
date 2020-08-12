@@ -72,9 +72,9 @@ class Productos extends Component {
                       const { stock } = item
                       let clase;
 
-                      if (stock <= 50) {
+                      if (stock <= 5) {
                         clase = 'text-light table-danger'
-                      } else if (stock > 51 && stock < 100) {
+                      } else if (stock >= 6 && stock < 10) {
                         clase = 'text-light table-warning'
                       }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Query, Mutation } from 'react-apollo';
-import { OBTENER_PRODUCTO } from '../../queries';
+import { OBTENER_PRODUCTO, CLIENTE_QUERY } from '../../queries';
 import ResumenProducto from './ResumenProducto';
 import { ACTUALIZAR_ESTADO } from '../../mutations';
 import ReactHTML from 'react-html-table-to-excel';
@@ -8,7 +8,9 @@ import '../../pedidos.css'
 
 const Pedido = (props) => {
   const { pedido } = props
-  const { id } = props.pedido;
+  const id = props.cliente;
+  console.log(id)
+
   const fecha = new Date(Number(pedido.fecha))
 
   function addCommas(nStr) {
@@ -44,7 +46,7 @@ const Pedido = (props) => {
                   value={pedido.estado}
                   onChange={e => {
                     const input = {
-                      id,
+                      id: pedido.id,
                       pedido: pedido.pedido,
                       fecha: pedido.fecha,
                       total: pedido.total,
@@ -67,20 +69,21 @@ const Pedido = (props) => {
           <p className="card-text font-weight-bold">Fecha Pedido:
             <span className="font-weight-normal"> {fecha.toLocaleString('es-CO')}</span>
           </p>
-          <table className="table table-hover" id={id}>
+          <table className="table table-hover" id={pedido.id}>
             <thead>
               <tr className="table-primary">
-                <th scope="col">Nombre</th>
+                <th scope="col">Referencia</th>
+                <th scope="col">Descripción del producto</th>
                 <th scope="col">Cantidad</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Total</th>
+                <th scope="col">Precio Unitario</th>
+                <th scope="col">Precio Total</th>
               </tr>
             </thead>
             <tbody>
               { pedido.pedido.map((producto, index) => {
                 const { id } = producto
                 return (
-                  <Query key={index+id} query={OBTENER_PRODUCTO} variables={{id}}>
+                  <Query key={index+pedido.id} query={OBTENER_PRODUCTO} variables={{id}}>
                     {({loading, error, data}) => {
                       if(loading) return 'Cargando...'
                       if(error) return `Error ${error.message}`
@@ -101,14 +104,24 @@ const Pedido = (props) => {
             <p className="card-text resaltar-texto bg-info">Total: </p>
             <p className="font-weight-normal ml-1 inc-texto">$ {addCommas(pedido.total)}</p>
           </div>
-          <ReactHTML
-            className="btn btn-success btn-block"
-            id={id+1}
-            table={id}
-            filename="Pedido"
-            sheet="Hoja 1"
-            buttonText="Exportar Excel"
-          />
+          <Query query={CLIENTE_QUERY} variables={{id}} pollInterval={500}>
+            {({ loading, error, data, startPolling, stopPolling }) => {
+              if(loading) return 'Cargando...'
+              if(error) return `Error: ${error.message}`;
+              const { nombre, apellido  } = data.getCliente;
+              console.log(data)
+              return (
+                <ReactHTML
+                  className="btn btn-success btn-block"
+                  id={id+1}
+                  table={pedido.id}
+                  filename={`${nombre} ${apellido}`}
+                  sheet="Hoja 1"
+                  buttonText="Exportar Excel"
+                />
+              )
+            }}
+          </Query>
         </div>
       </div>
     </div>
