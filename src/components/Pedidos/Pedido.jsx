@@ -3,6 +3,7 @@ import { Query, Mutation } from 'react-apollo';
 import { OBTENER_PRODUCTO } from '../../queries';
 import ResumenProducto from './ResumenProducto';
 import { ACTUALIZAR_ESTADO } from '../../mutations';
+import '../../pedidos.css'
 
 const Pedido = (props) => {
   const { pedido } = props
@@ -68,10 +69,7 @@ const Pedido = (props) => {
           <p className="card-text font-weight-bold">Fecha Pedido:
             <span className="font-weight-normal"> {fecha.toLocaleString('es-CO')}</span>
           </p>
-          <p className="card-text font-weight-bold">Total: 
-            <span className="font-weight-normal"> ${addCommas(pedido.total)}</span>
-          </p>
-          <h3 className="card-text text-center mb-3">Artículos del pedido</h3>
+          <h3 className="card-text text-center mb-3 resaltar-texto">Artículos del pedido</h3>
           <table className="table table-hover">
           <thead>
             <tr className="table-primary">
@@ -101,6 +99,10 @@ const Pedido = (props) => {
                 }) }
             </tbody>
           </table>
+          <div className="d-flex align-items-center justify-content-end">
+            <p className="card-text resaltar-texto">Total: </p>
+            <p className="font-weight-normal ml-1 inc-texto">$ {addCommas(pedido.total)}</p>
+          </div>
         </div>
       </div>
     </div>
