@@ -41,7 +41,7 @@ class Clientes extends Component {
         
         return (
           <>
-            <h2 className="text-center">Listado Clientes</h2>
+            <h2 className="text-center">Clientes</h2>
             <ul className="list-group mt-4">
               {data.getClientes.map(item => {
                 const { id } = item
@@ -56,12 +56,12 @@ class Clientes extends Component {
                           to={`/pedidos/nuevo/${id}`}
                           type="button"
                           className="btn btn-warning d-block d-md-inline-clock mr-2"
-                          >&#43; Nuevo pedido</Link>
+                          >Crear Pedido</Link>
                         <Link 
                           to={`/pedidos/${id}`}
                           type="button"
                           className="btn btn-primary d-block d-md-inline-clock mr-2"
-                          >Ver pedidos</Link>
+                          >Ver Pedidos</Link>
                         <Mutation mutation={ELIMINAR_CLIENTE}>
                           {eliminarCliente => (
                             <button 
@@ -91,7 +91,7 @@ class Clientes extends Component {
                               })
                             }}
                             >
-                              &times; Eliminar
+                              Eliminar Cliente
                             </button>
                           )}
                         </Mutation>

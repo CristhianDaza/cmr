@@ -6,8 +6,8 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 const Clientes = () => {
   return (
     <>
-      <Query query={TOP_CLIENTES}>
-        {({loading, error, data}) => {
+      <Query query={TOP_CLIENTES} pollInterval={1000}>
+        {({loading, error, data, startPolling, stopPolling}) => {
           if(loading) return 'Cargando...'
           if(error) return `Error ${error.message}`
           

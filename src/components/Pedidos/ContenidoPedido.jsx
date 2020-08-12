@@ -19,59 +19,6 @@ function addCommas(nStr) {
   return x1 + x2;
 }
 
-const colourStyles = {
-  control: styles => ({ ...styles, backgroundColor: 'white' }),
-  option: (styles, { isDisabled, isFocused, isSelected }) => {
-    return {
-      ...styles,
-      backgroundColor: isDisabled
-        ? null
-        : isSelected
-        ? '#272727'
-        : isFocused
-        ? '#737373'
-        : null,
-      color: isDisabled
-        ? '#ccc'
-        : isSelected
-        ? 'black'
-        : 'black',
-      cursor: isDisabled ? 'not-allowed' : 'default',
-
-      ':active': {
-        ...styles[':active'],
-        backgroundColor: !isDisabled && (isSelected ? '#272727' : '#272727'),
-      },
-    };
-  },
-  multiValue: styles => {
-    return {
-      ...styles,
-      backgroundColor: '#737373',
-    };
-  },
-  multiValueLabel: styles => ({
-    ...styles,
-    color: 'white',
-  }),
-  multiValueRemove: styles => ({
-    ...styles,
-    color: 'black',
-    ':hover': {
-      backgroundColor: 'rgb(48, 48, 48)',
-      color: 'black',
-    },
-  }),
-  input: styles => ({
-    ...styles,
-    color: 'black',
-    ':hover': {
-      backgroundColor: 'red',
-      color: 'blue',
-    },
-  }),
-};
-
 class ContenidoPedido extends Component {
   state = {
     productos: [],
@@ -131,7 +78,7 @@ class ContenidoPedido extends Component {
   }
 
   render() {
-    const emnsaje = (this.state.total < 0)
+    const mensaje = (this.state.total < 0)
                     ? Swal.fire(
                       '¡Error!',
                       'Las cantidades no pueden ser negativas.',
@@ -146,7 +93,6 @@ class ContenidoPedido extends Component {
           isMulti={true}
           components={makeAnimated()}
           placeholder={'Seleccionar Productos'}
-          styles={colourStyles}
           noOptionsMessage={e=>{return 'No hay más productos'}}
           getOptionValue={(options) => options.id}
           getOptionLabel={(options) => options.descripcion}

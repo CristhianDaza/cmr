@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { withRouter } from 'react-router-dom';
 
 const validadPedido = (props) => {
-  let noValido = !props.productos || props.total <= 0
+  let noValido = !props.productos || props.total < 1
   return noValido;
 }
 

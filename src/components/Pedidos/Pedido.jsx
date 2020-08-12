@@ -62,14 +62,10 @@ const Pedido = (props) => {
                 </select>
               )}
             </Mutation>
-          </p> 
-          <p className="card-text font-weight-bold">Pedido ID:
-            <span className="font-weight-normal"> {pedido.id}</span>
-          </p> 
+          </p>
           <p className="card-text font-weight-bold">Fecha Pedido:
             <span className="font-weight-normal"> {fecha.toLocaleString('es-CO')}</span>
           </p>
-          <h3 className="card-text text-center mb-3 resaltar-texto">Artículos del pedido</h3>
           <table className="table table-hover">
           <thead>
             <tr className="table-primary">
@@ -100,7 +96,7 @@ const Pedido = (props) => {
             </tbody>
           </table>
           <div className="d-flex align-items-center justify-content-end">
-            <p className="card-text resaltar-texto">Total: </p>
+            <p className="card-text resaltar-texto bg-info">Total: </p>
             <p className="font-weight-normal ml-1 inc-texto">$ {addCommas(pedido.total)}</p>
           </div>
         </div>

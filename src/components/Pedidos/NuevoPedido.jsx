@@ -16,8 +16,8 @@ class NuevoPedido extends Component {
             <DatosCliente id={ id } />
           </div>
           <div className="col-md-9">
-            <Query query={OBTENER_PRODUCTOS} variables={{stock: true}}>
-              {({ loading, error, data}) => {
+            <Query query={OBTENER_PRODUCTOS} pollInterval={500} variables={{stock: true}}>
+              {({ loading, error, data, startPolling, stopPolling}) => {
                 if(loading) return (
                   <div className="spinner">
                     <div className="bounce1"></div>

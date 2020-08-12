@@ -51,8 +51,28 @@ class Login extends Component {
         })
 
         setTimeout(() => {
-          this.props.history.push('/panel')
+          this.props.history.push('/')
         }, 1000)
+      })
+      .catch(err => {
+        this.limpiarState()
+
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+        
+        Toast.fire({
+          icon: 'error',
+          title: err.message
+        })
       })
   }
   validarForm = () => {

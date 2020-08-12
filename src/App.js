@@ -34,7 +34,7 @@ const App = ({refetch, session}) => {
             <Route exact path="/productos/editar/:id" component={EditarProducto} />
             <Route exact path="/pedidos/:id" component={PedidosCliente} />
             <Route exact path="/pedidos/nuevo/:id" component={NuevoPedido} />
-            <Route exact path="/panel" component={Panel} />
+            <Route exact path="/" component={Panel} />
             <Route exact path="/registro" component={Registro} />
             <Route exact path="/login"render={() => <Login refetch={refetch} />} />
           </Switch>
