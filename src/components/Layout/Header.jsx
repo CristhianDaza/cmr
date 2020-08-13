@@ -14,12 +14,12 @@ const Header = ({session}) => {
 };
 
 const NavegacionNoAutenticado = () => (
-  <h3 className="navbar-brand text-light font-weight-bold">CMR</h3>
+  <h3 className="navbar-brand text-light font-weight-bold">Bella Makeup 💋</h3>
 )
 
 const NavegacionAutenticado = () => (
   <>
-    <Link className="navbar-brand text-light font-weight-bold" to="/">CMR</Link>
+    <Link className="navbar-brand text-light font-weight-bold" to="/">Bella Makeup 💋</Link>
     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navegacion" aria-controls="navegacion" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
