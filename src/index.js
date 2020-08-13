@@ -10,6 +10,7 @@ const client = new ApolloClient({
   uri: "https://still-brushlands-76552.herokuapp.com/",
   // enviar token al servidor
   fetchOptions: {
+    mode: 'no-cors',
     credentials: 'include'
   },
   request: operation => {
