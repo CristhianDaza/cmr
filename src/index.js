@@ -7,7 +7,7 @@ import { ApolloProvider } from 'react-apollo';
 import * as serviceWorker from './serviceWorker';
 
 const client = new ApolloClient({
-  uri: "https://still-brushlands-76552.herokuapp.com/",
+  uri: "https://bellaserver.herokuapp.com/",
   // enviar token al servidor
   fetchOptions: {
     mode: 'no-cors',
