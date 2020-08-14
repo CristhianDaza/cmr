@@ -8,11 +8,12 @@ import * as serviceWorker from './serviceWorker';
 
 const client = new ApolloClient({
   uri: "https://bellaserver.herokuapp.com/graphql",
+  // uri: "http://localhost:4000/graphql",
   // enviar token al servidor
-  fetchOptions: {
-    mode: 'no-cors',
-    credentials: 'include'
-  },
+  // fetchOptions: {
+  //   mode: 'no-cors',
+  //   credentials: 'include'
+  // },
   request: operation => {
     const token = localStorage.getItem('token')
     operation.setContext({
