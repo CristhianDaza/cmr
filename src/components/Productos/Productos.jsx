@@ -73,9 +73,9 @@ class Productos extends Component {
                       let clase;
 
                       if (stock <= 5) {
-                        clase = 'text-light table-danger'
+                        clase = 'table-danger'
                       } else if (stock >= 6 && stock < 10) {
-                        clase = 'text-light table-warning'
+                        clase = 'table-warning'
                       }
 
                       
